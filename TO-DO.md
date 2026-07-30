@@ -1,5 +1,5 @@
 # TO-DO
-## General to-do
+## General TO-DO
 + Make a working, click-able grid
 + New Task
 ## HTML
@@ -10,5 +10,6 @@
 + Make "off-light" color = black
 + New Task
 ## JavaScript
-+ Add clicking
++ Add clicking on grid
++ Have a variable "showSteps" where the user can select to see a full visulzation of the algorithm they chose, or they can just get the result. Needs a good, boolean-esk var name
 + New Task

@@ -1,4 +1,4 @@
-# lights-out-puzzle-solver
+# Lights Out Puzzle Solver
 This application is able to generate and be given Lights Out puzzles and solve them.
 
 ## Demo files explained
