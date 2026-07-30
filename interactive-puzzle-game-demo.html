@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10x10 Puzzle Game</title>
+    <style>
+        body { font-family: system-ui, sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; background: #1a1a2e; color: #fff; }
+        h1 { margin-bottom: 5px; font-size: 2rem; }
+        #hint { font-size: 1.1rem; color: #a0aec0; margin-bottom: 20px; min-height: 1.5rem; }
+        
+        /* 10x10 Grid Layout */
+        #puzzle-grid { display: grid; grid-template-columns: repeat(10, 45px); grid-template-rows: repeat(10, 45px); gap: 4px; background: #16213e; padding: 10px; border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+        
+        /* Interactive Squares */
+        .square { background: #0f3460; border: none; border-radius: 4px; cursor: pointer; transition: all 0.15s ease; outline: none; }
+        .square:hover { background: #e94560; transform: scale(1.05); }
+        
+        /* State Modifiers */
+        .wrong { background: #53354a !important; transform: scale(0.9); opacity: 0.6; cursor: not-allowed; }
+        .correct { background: #00ff7f !important; transform: scale(1.1); box-shadow: 0 0 15px #00ff7f; animation: celebrate 0.5s ease infinite alternate; }
+        
+        @keyframes celebrate { 
+            0% { transform: scale(1.1); } 
+            100% { transform: scale(1.15); } 
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Find the Secret Square</h1>
+    <div id="hint">Click any square to start hunting!</div>
+    <div id="puzzle-grid"></div>
+
+    <script>
+        const GRID_SIZE = 10;
+        const gridContainer = document.getElementById('puzzle-grid');
+        const hintDisplay = document.getElementById('hint');
+        let gameActive = true;
+
+        // Pick a random target square (0 to 9)
+        const targetRow = Math.floor(Math.random() * GRID_SIZE);
+        const targetCol = Math.floor(Math.random() * GRID_SIZE);
+
+        // Generate the 100 grid squares
+        for (let r = 0; r < GRID_SIZE; r++) {
+            for (let c = 0; c < GRID_SIZE; c++) {
+                const square = document.createElement('button');
+                square.classList.add('square');
+                
+                // Add click listener to each individual cell
+                square.addEventListener('click', () => {
+                    if (!gameActive || square.classList.contains('wrong')) return;
+
+                    if (r === targetRow && c === targetCol) {
+                        // Win condition met
+                        square.classList.add('correct');
+                        hintDisplay.innerHTML = "🎉 <strong>You found it! Incredible job!</strong>";
+                        hintDisplay.style.color = "#00ff7f";
+                        gameActive = false;
+                    } else {
+                        // Wrong square: Calculate grid distance for a hot/cold hint
+                        square.classList.add('wrong');
+                        const distance = Math.abs(r - targetRow) + Math.abs(c - targetCol);
+                        
+                        if (distance <= 2) {
+                            hintDisplay.textContent = "🔥 Burning Hot! You are right next to it.";
+                            hintDisplay.style.color = "#ff4d4d";
+                        } else if (distance <= 4) {
+                            hintDisplay.textContent = "🌤️ Warm. Getting closer.";
+                            hintDisplay.style.color = "#ffa500";
+                        } else {
+                            hintDisplay.textContent = "❄️ Freezing Cold. Far away.";
+                            hintDisplay.style.color = "#a0aec0";
+                        }
+                    }
+                });
+
+                gridContainer.appendChild(square);
+            }
+        }
+    </script>
+</body>
+</html>
