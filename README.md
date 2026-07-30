@@ -8,6 +8,6 @@ I WILL NOT be generating the code for my application. Instead, at the end of thi
 
 ## Inspiration for this project
 Inspiration for this project is from a Youtube video I watched called:
-(Solving Lights Out Puzzles | Light Chasing vs Linear Algebra)[https://www.youtube.com/watch?v=rQtRK-AJOGg]
+[Solving Lights Out Puzzles | Light Chasing vs Linear Algebra](https://www.youtube.com/watch?v=rQtRK-AJOGg)
 
 Seeing @Random Noise's video made me want to do a visualization of the solving algorithm of Lights Out puzzles!
