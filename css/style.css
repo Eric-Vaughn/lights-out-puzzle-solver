@@ -7,6 +7,10 @@ body {
     background-color: #f0f2f5;
 }
 
+.center-text {
+    text-align: center;
+}
+
 .grid-container {
     display: grid;
     /* Creates a responsive 8x8 grid where cells shrink/grow evenly */
@@ -32,5 +36,5 @@ body {
 
 /* Class to toggle active state when clicked */
 .cell.active {
-    background-color: #007bff;
+    background-color: #fff020;
 }
