@@ -18,6 +18,8 @@ body {
     grid-template-columns: repeat(8, 60px);
     grid-template-rows: repeat(8, 60px);
     gap: 4px; 
+    margin-top: 20px;
+    margin-bottom: 20px;
     background-color: #ffffff;
     padding: 10px;
     border-radius: 8px;
@@ -36,6 +38,26 @@ body {
 }
 
 /* Class to toggle active state when clicked */
-.cell.active {
+.cell.on {
     background-color: #fff020;
+}
+
+.reset-button {
+    background-color: #e63946;                /* A "destructive" red for the reset action */
+    color: #ffffff;                           /* Crisp white text color */
+    font-family: sans-serif;                    /* Clean, modern font */
+    font-size: 14px;                            /* Readable text size */
+    font-weight: 600;                           /* Slightly bold text */
+    padding: 10px 20px;                         /* Spacing inside the button (vertical horizontal) */
+    border: none;                               /* Removes the ugly default browser border */
+    border-radius: 6px;                         /* Smooth, slightly rounded corners */
+    cursor: pointer;                            /* Changes the mouse cursor to a pointer hand */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds a subtle depth/shadow */
+    transition: all 0.2s ease;
+}
+
+.reset-button:hover {
+    background-color: #cb2d3a;                  /* Darken the red slightly to show interaction */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);  /* Lift effect by increasing the shadow */
+    transform: translateY(-1px);                  /* Slightly lift the button upward */
 }
