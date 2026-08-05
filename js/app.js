@@ -1,12 +1,14 @@
-const gridContainer = document.getElementById('grid-container');
+const resetButton = require("ResetButton");
+
+const gridContainer = document.getElementById("grid-container");
 const ROWS = 8;
 const COLS = 8;
 
-// 1. Generate the grid cells dynamically
+// Generate the grid cells dynamically
 for (let row = 0; row < ROWS; row++) {
     for (let col = 0; col < COLS; col++) {
-        const cell = document.createElement('div');
-        cell.classList.add('cell');
+        const cell = document.createElement("div");
+        cell.classList.add("cell");
         
         // Store coordinates directly on the DOM element
         cell.dataset.row = row;
@@ -16,10 +18,10 @@ for (let row = 0; row < ROWS; row++) {
     }
 }
 
-// 2. Event Delegation: Listen for clicks on the parent container
-gridContainer.addEventListener('click', (event) => {
+// Event Delegation: Listen for clicks on the parent container
+gridContainer.addEventListener("click", (event) => {
     // Ensure the target is actually a cell, not the spaces between them
-    const clickedCell = event.target.closest('.cell');
+    const clickedCell = event.target.closest(".cell");
     
     if (!clickedCell) return; 
 
@@ -30,5 +32,5 @@ gridContainer.addEventListener('click', (event) => {
     console.log(`Cell clicked at Row: ${r}, Column: ${c}`);
 
     // Toggle the visual state
-    clickedCell.classList.toggle('active');
+    clickedCell.classList.toggle("active");
 });
