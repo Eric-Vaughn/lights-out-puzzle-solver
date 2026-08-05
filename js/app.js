@@ -1,4 +1,4 @@
-const container = document.getElementById('grid-container');
+const gridContainer = document.getElementById('grid-container');
 const ROWS = 8;
 const COLS = 8;
 
@@ -12,12 +12,12 @@ for (let row = 0; row < ROWS; row++) {
         cell.dataset.row = row;
         cell.dataset.col = col;
         
-        container.appendChild(cell);
+        gridContainer.appendChild(cell);
     }
 }
 
 // 2. Event Delegation: Listen for clicks on the parent container
-container.addEventListener('click', (event) => {
+gridContainer.addEventListener('click', (event) => {
     // Ensure the target is actually a cell, not the spaces between them
     const clickedCell = event.target.closest('.cell');
     
