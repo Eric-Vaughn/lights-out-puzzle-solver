@@ -30,6 +30,12 @@ gridContainer.addEventListener("click", (event) => {
     
     console.log(`Cell clicked at Row: ${r}, Column: ${c}`);
 
-    // Toggle the visual state
-    clickedCell.classList.toggle("on");
+     // Toggle the status string and the visual class
+    if (clickedCell.dataset.status === "off") { // If off --> turn on
+        clickedCell.dataset.status = "on";
+        clickedCell.classList.add("on");
+    } else {
+        clickedCell.dataset.status = "off";
+        clickedCell.classList.remove("on");
+    }
 });
