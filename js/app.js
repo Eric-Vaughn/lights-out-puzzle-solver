@@ -1,6 +1,4 @@
-const resetButton = require("ResetButton");
-
-const gridContainer = document.getElementById("grid-container");
+export const gridContainer = document.getElementById("grid-container");
 const ROWS = 8;
 const COLS = 8;
 
@@ -13,6 +11,7 @@ for (let row = 0; row < ROWS; row++) {
         // Store coordinates directly on the DOM element
         cell.dataset.row = row;
         cell.dataset.col = col;
+        cell.dataset.status = "off";
         
         gridContainer.appendChild(cell);
     }
@@ -32,5 +31,5 @@ gridContainer.addEventListener("click", (event) => {
     console.log(`Cell clicked at Row: ${r}, Column: ${c}`);
 
     // Toggle the visual state
-    clickedCell.classList.toggle("active");
+    clickedCell.classList.toggle("on");
 });
