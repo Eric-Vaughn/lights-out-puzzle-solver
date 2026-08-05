@@ -12,5 +12,5 @@
 + ✅ Add clicking on grid
 + Have a variable "showSteps" where the user can select to see a full visulzation of the algorithm they chose, or they can just get the result. Needs a good, boolean-esk var name
 + ✅ Provide a reset button
-+ Add "lights out" functionality to clicking on a grid cell (flips state of surrounding cells)
++ ✅Add "lights out" functionality to clicking on a grid cell (flips state of surrounding cells)
 + Provide a "generate random puzzle layout" button (random, so not guaranteed to be solvable. Mention this to the user in a title/otherwise)
