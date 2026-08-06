@@ -93,4 +93,19 @@ export class Grid {
             this.flipNeighbors(clickedCell);
         });
     }
+
+    turnAllCellsOff() {
+        // Find only the cells that are currently "on"
+        const activeCells = this.gridContainer.querySelectorAll('.cell[data-status="on"]');
+        console.log(`Found ${activeCells.length} active cells to turn off.`);
+
+        // Loop through them and change their status back to "off"
+        activeCells.forEach(cell => {
+            cell.dataset.status = "off";
+            
+            // Remove the active CSS class(es) that is styling them
+            cell.classList.remove("on"); 
+        });
+    }
+    
 }
