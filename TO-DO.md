@@ -14,7 +14,7 @@
 + ✅ Add hover affects to reset-button
 ## JavaScript
 + ✅ Add clicking on grid
-+ ✅Add "lights out" functionality to clicking on a grid cell (flips state of surrounding cells)
++ ✅ Add "lights out" functionality to clicking on a grid cell (flips state of surrounding cells)
 + ✅ Provide a reset button
 + ✅ Add a "new" method to Grid.js class that is the ResetButton.js's functionality (clear all cells to an off state). Then, ResetButton.js will only need to call on that method. Potential names for method: "turnGridOff", "resetGrid", "turnAllCellsOff"
 + Have a variable "showSteps" where the user can select to see a full visulzation of the algorithm they chose, or they can just get the result. Needs a good, boolean-esk var name
