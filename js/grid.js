@@ -37,7 +37,11 @@ export class Grid {
         }
     }
 
-    // Function that flips a single, given cell on/off
+    /**
+     * Flips the given cell on/off
+     * @param {Node} cell
+     * @returns void 
+     */
     flipCell(cell) {
         // Toggle the status string and the visual class
         if (cell.dataset.status === "off") { // If off --> turn on
@@ -52,6 +56,7 @@ export class Grid {
     /**
      * Flips a given cell's cardinal neighbors (North, South, East, & West)
      * @param {Node} cell 
+     * @returns void
      */
     flipNeighbors(cell) {
         const row = cell.dataset.row;
@@ -81,6 +86,7 @@ export class Grid {
     /**
      * Flips the state of the given cell and it's four cardinal neighbors
      * @param {Node} cell 
+     * @returns void
      */
     flipCellAndNeighbors(cell) {
         this.flipCell(cell);
@@ -89,7 +95,7 @@ export class Grid {
 
     /**
      * Listen for clicks on the parent container
-     * @returns: void
+     * @returns void
      */
     initEventListeners() {
         this.gridContainer.addEventListener("click", (event) => {
@@ -110,7 +116,7 @@ export class Grid {
 
     /**
      * Turns all "on" cells "off".
-     * @returns: void
+     * @returns void
      */
     turnAllCellsOff() {
         // Find only the cells that are currently "on"
@@ -125,7 +131,7 @@ export class Grid {
     
     /**
      * Generates a random layout for the grid. Not garrenteed to be solvable.
-     * @returns: void
+     * @returns void
      */
     genRandomLayout() {
         const PERCENT_CELLS_TO_FILP = 0.15; // The percentage of total cells to randomly flip
@@ -154,7 +160,7 @@ export class Grid {
     /** 
      * Clears the given row of "on" cells by turning them off
      * @param {number} row: The row (index) to be cleared. Must NOT be the last row of the grid.
-     * @returns: void
+     * @returns void
     */
     clearRow(row) {
         let cellsToBeProcessed = this.gridContainer.querySelectorAll(`[data-row="${row}"][data-status="${"on"}"]`);
