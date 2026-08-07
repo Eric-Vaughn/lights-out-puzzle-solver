@@ -80,7 +80,10 @@ export class Grid {
         this.flipNeighbors(cell);
     }
 
-    // Event Delegation: Listen for clicks on the parent container
+    /**
+     * Listen for clicks on the parent container
+     * @returns: void
+     */
     initEventListeners() {
         this.gridContainer.addEventListener("click", (event) => {
             // Ensure the target is actually a cell, not the spaces between them
