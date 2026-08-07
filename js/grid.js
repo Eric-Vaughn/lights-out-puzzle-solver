@@ -109,6 +109,10 @@ export class Grid {
         });
     }
     
+    /**
+     * Generates a random layout for the grid. Not garrenteed to be solvable.
+     * @returns: void
+     */
     genRandomLayout() {
         const PERCENT_CELLS_TO_FILP = 0.15; // The percentage of total cells to randomly flip
         // TotalCells * PercentToFlip --> Floor() it and ensure it is a Number not a Float
@@ -133,9 +137,10 @@ export class Grid {
         }
     }
 
-    /** clearRow() clears the given row of "on" cells by turning them off
-     * @param row: The row (index) to be cleared. Must NOT be the last row of the grid.
-     * @return: void
+    /** 
+     * Clears the given row of "on" cells by turning them off
+     * @param {number} row: The row (index) to be cleared. Must NOT be the last row of the grid.
+     * @returns: void
     */
     clearRow(row) {
         let cellsToBeProcessed = this.gridContainer.querySelectorAll(`[data-row="${row}"][data-status="${"on"}"]`);
