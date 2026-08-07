@@ -1,5 +1,10 @@
 export class Grid {
-    // Initialize properties and find the DOM element
+    /**
+     * Initializes a new instance of the Grid class
+     * @param {DocumentElementID} containerId 
+     * @param {number} rows 
+     * @param {number} cols 
+     */
     constructor(containerId, rows = 8, cols = 8) {
         this.gridContainer = document.getElementById(containerId);
         this.rows = rows;
@@ -17,7 +22,10 @@ export class Grid {
         this.initEventListeners();
     }
 
-    // Generate the grid cells dynamically
+    /**
+     * Generates the grid cells dynamically
+     * @returns void
+     */ 
     render() {
         // Clear any existing content inside the container
         this.gridContainer.innerHTML = "";
