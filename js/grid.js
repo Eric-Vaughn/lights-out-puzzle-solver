@@ -98,6 +98,10 @@ export class Grid {
         });
     }
 
+    /**
+     * Turns all "on" cells "off".
+     * @returns: void
+     */
     turnAllCellsOff() {
         // Find only the cells that are currently "on"
         const activeCells = this.gridContainer.querySelectorAll('.cell[data-status="on"]');
