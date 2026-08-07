@@ -21,6 +21,7 @@
 + ✅ Add a new button called something akin to "Randomize". It will simply call the above TO-DO entry's method. 
 + + ❌ Mention a random configuation is not guaranteed to be solvable to the user
 + Add algorithm to solve the puzzle (Light-Chasing method)
++ Add a button called "Solve: Light-Chase"
 + Add algorithm to solve the puzzle (Linear Equations)
 + + This method allows for more varied cases to be solved, i.e. a hex version of a Lights Out puzzle
 + Have a variable "showSteps" where the user can select to see a full visulzation of the algorithm they chose, or they can just get the result. Needs a good, boolean-esk var name
