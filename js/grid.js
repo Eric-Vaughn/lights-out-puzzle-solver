@@ -30,7 +30,7 @@ export class Grid {
                 // Store coordinates directly on the DOM element
                 cell.dataset.row = row;
                 cell.dataset.col = col;
-                cell.dataset.status = "off";
+                cell.dataset.status = "off"; // Can only be "off" or "on"
                 
                 this.gridContainer.appendChild(cell);
             }
@@ -101,11 +101,33 @@ export class Grid {
 
         // Loop through them and change their status back to "off"
         activeCells.forEach(cell => {
-            cell.dataset.status = "off";
-            
-            // Remove the active CSS class(es) that is styling them
-            cell.classList.remove("on"); 
+            this.flipCell(cell);
         });
     }
     
+    genRandomLayout() {
+        const PERCENT_CELLS_TO_FILP = 0.15; // The percentage of total cells to randomly flip
+        // TotalCells * PercentToFlip --> Floor() it and ensure it is a Number not a Float
+        let numOfCellsToFlipOn = Number(Math.floor((this.rows * this.cols) * PERCENT_CELLS_TO_FILP));
+        let randRowIndex;
+        let randColIndex;
+        let randChosenCell;
+        
+        console.log(`This is the value of numOfCellsToFlipOn: ${numOfCellsToFlipOn}`);
+
+        // Reset grid to an "off" state
+        this.turnAllCellsOff();
+
+        // Loop until control variable === 0
+        while (numOfCellsToFlipOn) {
+            randRowIndex = Math.floor(Math.random() * this.rows); // 0...rows exclusive
+            randColIndex = Math.floor(Math.random() * this.cols); // 0...cols exclusive
+            randChosenCell = this.gridContainer.querySelector(`[data-row="${randRowIndex}"][data-col="${randColIndex}"]`);
+
+            if (randChosenCell.dataset.status === "off") {
+                this.flipCell(randChosenCell);
+                numOfCellsToFlipOn--;
+            }
+        }
+    }
 }
