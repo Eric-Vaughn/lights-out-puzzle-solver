@@ -1,4 +1,4 @@
-import { puzzleGrid } from "./app";
+import { puzzleGrid } from "./app.js";
 
 const solveButton = document.getElementById("solve-button");
 
