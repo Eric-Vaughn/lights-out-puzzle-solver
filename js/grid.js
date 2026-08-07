@@ -1,7 +1,7 @@
 export class Grid {
     /**
      * Initializes a new instance of the Grid class
-     * @param {DocumentElementID} containerId 
+     * @param {string} containerId 
      * @param {number} rows 
      * @param {number} cols 
      */
