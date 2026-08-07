@@ -113,8 +113,6 @@ export class Grid {
         let randColIndex;
         let randChosenCell;
         
-        console.log(`This is the value of numOfCellsToFlipOn: ${numOfCellsToFlipOn}`);
-
         // Reset grid to an "off" state
         this.turnAllCellsOff();
 
