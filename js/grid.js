@@ -49,7 +49,10 @@ export class Grid {
         }
     }
 
-    // Function to process flipping a cell's neighbors (North, South, East, & West)
+    /**
+     * Flips a given cell's cardinal neighbors (North, South, East, & West)
+     * @param {Node} cell 
+     */
     flipNeighbors(cell) {
         const row = cell.dataset.row;
         const col = cell.dataset.col;
