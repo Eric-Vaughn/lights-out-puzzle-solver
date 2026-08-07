@@ -185,7 +185,14 @@ export class Grid {
         cellsToFlip.forEach(cell => { this.flipCellAndNeighbors(cell); });
     }
 
+    /**
+     * Solves the puzzle using the Light Chase method
+     * @returns void
+     */
     solveWithLightChase() {
-        // TO-DO
+        /**
+         * @TODO Finish this function b. If you wanna test clearRow() again, add it under this docstring.
+         * RECALL: Loop until the last row, but DO NOT PROCESS the last row. Check if it's in a solved configuation. Augment only if such.
+         */
     }
 }
