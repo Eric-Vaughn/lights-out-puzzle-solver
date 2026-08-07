@@ -133,7 +133,7 @@ export class Grid {
         }
     }
 
-    /** clearRow() is a helper function for solveWithLightChase()
+    /** clearRow() clears the given row of "on" cells by turning them off
      * @param row: The row (index) to be cleared. Must NOT be the last row of the grid.
      * @return: void
     */
