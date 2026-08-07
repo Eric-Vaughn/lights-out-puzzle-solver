@@ -75,6 +75,11 @@ export class Grid {
         });
     }
 
+    flipCellAndNeighbors(cell) {
+        this.flipCell(cell);
+        this.flipNeighbors(cell);
+    }
+
     // Event Delegation: Listen for clicks on the parent container
     initEventListeners() {
         this.gridContainer.addEventListener("click", (event) => {
@@ -89,8 +94,7 @@ export class Grid {
             
             console.log(`Cell clicked at Row: ${r}, Column: ${c}`);
 
-            this.flipCell(clickedCell);
-            this.flipNeighbors(clickedCell);
+            this.flipCellAndNeighbors(clickedCell);
         });
     }
 
@@ -127,5 +131,28 @@ export class Grid {
                 numOfCellsToFlipOn--;
             }
         }
+    }
+
+    /** clearRow() is a helper function for solveWithLightChase()
+     * @param row: The row (index) to be cleared. Must NOT be the last row of the grid.
+     * @return: void
+    */
+    clearRow(row) {
+        let cellsToBeProcessed = this.gridContainer.querySelectorAll(`[data-row="${row}"][data-status="${"on"}"]`);
+        let cellsToFlip = [];
+        
+        // To clear the given row, we need to flip the cells underneath any "on" cells in our current row. So find them...
+        for (const cell of cellsToBeProcessed) {
+            cellsToFlip.push(
+                this.gridContainer.querySelector(
+                    `[data-row="${Number(cell.dataset.row) + 1}"][data-col="${Number(cell.dataset.col)}"]`));
+        }
+
+        // ... then flip them
+        cellsToFlip.forEach(cell => { this.flipCellAndNeighbors(cell); });
+    }
+
+    solveWithLightChase() {
+        // TO-DO
     }
 }
