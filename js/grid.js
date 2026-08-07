@@ -75,6 +75,10 @@ export class Grid {
         });
     }
 
+    /**
+     * Flips the state of the given cell and it's four cardinal neighbors
+     * @param {Node} cell 
+     */
     flipCellAndNeighbors(cell) {
         this.flipCell(cell);
         this.flipNeighbors(cell);
