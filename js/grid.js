@@ -186,6 +186,23 @@ export class Grid {
     }
 
     /**
+     * Creates an array of booleans that represents the on/off states of the last row's cells
+     * @returns an array of booleans that represents the on/off states of the last row's cells
+     */
+    getBottomRowState() {
+        let stateArray = Array(this.cols).fill(false);
+        let bottomCells = this.gridContainer.querySelectorAll(`[data-row="${this.rows - 1}"]`);
+
+        for (const cell of bottomCells) {
+            if (cell.dataset.status === "on") {
+                stateArray[cell.dataset.col] = true;
+            }
+        }
+
+        return stateArray;
+    }
+
+    /**
      * Solves the puzzle using the Light Chase method
      * @returns void
      */
@@ -197,15 +214,16 @@ export class Grid {
 
         // Create an array[] of booleans to rep. permutations
         let permutationArray = Array(this.cols).fill(false);
-        console.log(permutationArray);
+        // console.log(permutationArray);
 
         // Loop, clearing all rows but last one using clearRow()
         // until last row can be checked
-        for (let i = 0; i < this.rows - 1; i++) { // -1 = index of second to last row
+        for (let i = 0; i < this.rows - 1; i++) { // (rows - 1) = index of second to last row
             this.clearRow(i);
         }
 
         // Check last row - HARD FUNCTIONALITLY. Functionalize this, I feel
+        console.log(this.getBottomRowState());
 
         // Go through all permutations of first row's configuation - look ahead? recursion?
     }
