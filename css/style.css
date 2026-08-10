@@ -81,3 +81,23 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);  /* Lift effect by increasing the shadow */
     transform: translateY(-1px);                  /* Slightly lift the button upward */
 }
+
+.solve-button {
+    background-color: #2df1e8;
+    color: #ffffff;
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+}
+
+.solve-button:hover {
+    background-color: #2cd6ce;                  /* Darken the normal color slightly to show interaction */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);  /* Lift effect by increasing the shadow */
+    transform: translateY(-1px); 
+}
