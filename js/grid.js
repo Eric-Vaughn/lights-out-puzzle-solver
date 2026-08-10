@@ -201,9 +201,12 @@ export class Grid {
 
         // Loop, clearing all rows but last one using clearRow()
         // until last row can be checked
+        for (let i = 0; i < this.rows - 1; i++) { // -1 = index of second to last row
+            this.clearRow(i);
+        }
 
-        // Check last row
+        // Check last row - HARD FUNCTIONALITLY. Functionalize this, I feel
 
-        // Go through all permutations of first row's configuation
+        // Go through all permutations of first row's configuation - look ahead? recursion?
     }
 }
