@@ -207,14 +207,16 @@ export class Grid {
      * @returns void
      */
     solveWithLightChase() {
-        /**
-         * @TODO Finish this function b. If you wanna test clearRow() again, add it under this docstring.
-         * RECALL: Loop until the last row, but DO NOT PROCESS the last row. Check if it's in a solved configuation. Augment only if such.
-         */
-
-        // Create an array[] of booleans to rep. permutations
-        let permutationArray = Array(this.cols).fill(false);
-        // console.log(permutationArray);
+        const lookupTable = {
+        '00000': [],           // Already solved
+        '10001': [3, 4],       // Lights at 1 and 5 -> Click cells 4 and 5
+        '01010': [1, 3, 4],    // Lights at 2 and 4 -> Click cells 2, 4, and 5
+        '11100': [1],          // Lights at 1, 2, and 3 -> Click cell 2
+        '00111': [3],          // Lights at 3, 4, and 5 -> Click cell 4
+        '10110': [4],          // Lights at 1, 3, and 4 -> Click cell 5
+        '01101': [0],          // Lights at 2, 3, and 5 -> Click cell 1
+        '11011': [2]           // Lights at 1, 2, 4, and 5 -> Click cell 3
+    };
 
         // Loop, clearing all rows but last one using clearRow()
         // until last row can be checked
