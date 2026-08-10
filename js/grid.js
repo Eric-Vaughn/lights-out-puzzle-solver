@@ -204,6 +204,6 @@ export class Grid {
 
         // Check last row
 
-        // Go through all permutations of first
+        // Go through all permutations of first row's configuation
     }
 }
