@@ -208,14 +208,14 @@ export class Grid {
      */
     solveWithLightChase() {
         const lookupTable = {
-        '00000': [],           // Already solved
-        '10001': [3, 4],       // Lights at 1 and 5 -> Click cells 4 and 5
-        '01010': [1, 3, 4],    // Lights at 2 and 4 -> Click cells 2, 4, and 5
-        '11100': [1],          // Lights at 1, 2, and 3 -> Click cell 2
-        '00111': [3],          // Lights at 3, 4, and 5 -> Click cell 4
-        '10110': [4],          // Lights at 1, 3, and 4 -> Click cell 5
-        '01101': [0],          // Lights at 2, 3, and 5 -> Click cell 1
-        '11011': [2]           // Lights at 1, 2, 4, and 5 -> Click cell 3
+        "00000": [],           // Already solved
+        "10001": [3, 4],       // Lights at 1 and 5 -> Click cells 4 and 5
+        "01010": [1, 3, 4],    // Lights at 2 and 4 -> Click cells 2, 4, and 5
+        "11100": [1],          // Lights at 1, 2, and 3 -> Click cell 2
+        "00111": [3],          // Lights at 3, 4, and 5 -> Click cell 4
+        "10110": [4],          // Lights at 1, 3, and 4 -> Click cell 5
+        "01101": [0],          // Lights at 2, 3, and 5 -> Click cell 1
+        "11011": [2]           // Lights at 1, 2, 4, and 5 -> Click cell 3
     };
 
         // Loop, clearing all rows but last one using clearRow()
