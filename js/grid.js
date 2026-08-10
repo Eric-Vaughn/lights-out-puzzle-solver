@@ -207,6 +207,9 @@ export class Grid {
      * @returns void
      */
     solveWithLightChase() {
+        let state = [];
+        let actions = [];
+        let stateString = "";
         const lookupTable = {
         "00000": [],           // Already solved
         "10001": [3, 4],       // Lights at 1 and 5 -> Click cells 4 and 5
@@ -218,6 +221,8 @@ export class Grid {
         "11011": [2]           // Lights at 1, 2, 4, and 5 -> Click cell 3
     };
 
+        // TODO Extend the lookup table from 5x5 to 8x8. Need vectors?
+
         // Loop, clearing all rows but last one using clearRow()
         // until last row can be checked
         for (let i = 0; i < this.rows - 1; i++) { // (rows - 1) = index of second to last row
@@ -225,8 +230,9 @@ export class Grid {
         }
 
         // Check last row - HARD FUNCTIONALITLY. Functionalize this, I feel
-        console.log(this.getBottomRowState());
-
+        state = this.getBottomRowState();
+        stateString = state.map(val => val ? '1' : '0').join('');
+        
         // Go through all permutations of first row's configuation - look ahead? recursion?
     }
 }
