@@ -194,5 +194,16 @@ export class Grid {
          * @TODO Finish this function b. If you wanna test clearRow() again, add it under this docstring.
          * RECALL: Loop until the last row, but DO NOT PROCESS the last row. Check if it's in a solved configuation. Augment only if such.
          */
+
+        // Create an array[] of booleans to rep. permutations
+        let permutationArray = Array(this.cols).fill(false);
+        console.log(permutationArray);
+
+        // Loop, clearing all rows but last one using clearRow()
+        // until last row can be checked
+
+        // Check last row
+
+        // Go through all permutations of first
     }
 }
