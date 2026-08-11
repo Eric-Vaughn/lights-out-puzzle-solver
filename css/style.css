@@ -14,9 +14,13 @@ body {
 
 .grid-container {
     display: grid;
-    /* Creates a responsive 8x8 grid where cells shrink/grow evenly */
-    grid-template-columns: repeat(8, 60px);
-    grid-template-rows: repeat(8, 60px);
+    /* Use the JS variables, falling back to 8 if not provided */
+    grid-template-columns: repeat(var(--cols, 8), 1fr);
+    grid-template-rows: repeat(var(--rows, 8), 1fr);
+    /* Layout styling */
+    width: 100%;          /* Fill parent container width */
+    max-width: 500px;     /* Cap maximum size so it stays sharp */
+    aspect-ratio: var(--cols) / var(--rows); /* Keeps cells perfectly square */
     gap: 4px; 
     margin-top: 20px;
     margin-bottom: 20px;
