@@ -46,6 +46,29 @@ export class Grid {
     }
 
     /**
+     * Generates a 2D array version of the grid's current state
+     * @returns a 2D array of the grid's current state
+     */
+    getBoardState() {
+    // Create an empty 2D array matching your grid dimensions
+    const board = Array(this.rows).fill(0).map(() => Array(this.cols).fill(0));
+    
+    // Find all rendered cells
+    const cells = this.gridContainer.querySelectorAll(".cell");
+    
+    cells.forEach(cell => {
+        const row = parseInt(cell.dataset.row, 10); // Numeric literal "10" denotes default case: base 10
+        const col = parseInt(cell.dataset.col, 10);
+        const isOn = cell.dataset.status === "on";
+        
+        board[row][col] = isOn ? 1 : 0;
+    });
+    
+    return board;
+}
+
+
+    /**
      * Flips the given cell on/off
      * @param {Node} cell
      * @returns void 
