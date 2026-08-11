@@ -30,6 +30,10 @@ export class Grid {
         // Clear any existing content inside the container
         this.gridContainer.innerHTML = "";
 
+        // Inject the grid sizes as CSS variables
+        this.gridContainer.style.setProperty('--rows', this.rows);
+        this.gridContainer.style.setProperty('--cols', this.cols);
+
         for (let row = 0; row < this.rows; row++) {
             for (let col = 0; col < this.cols; col++) {
                 const cell = document.createElement("div");
@@ -66,7 +70,6 @@ export class Grid {
     
     return board;
 }
-
 
     /**
      * Flips the given cell on/off
