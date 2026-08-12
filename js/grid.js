@@ -238,7 +238,11 @@ export class Grid {
         const width = initialBoard[0].length;
         const maxCombinations = Math.pow(2, width); // 2^W possibilities
 
-        // Helper to simulate a grid state and chase it down
+        /**
+         * Helper to simulate a grid state and chase it down
+         * @param {number} firstRowPattern - Number whose 1's & 0's pattern is used as a row-state permutation to try
+         * @returns - a 2D array of moves (where to click) if a solution is found, null otherwise
+         */
         function tryFirstRowPattern(firstRowPattern) {
             // Clone the original board to avoid modifying it
             let board = initialBoard.map(row => [...row]);
@@ -266,17 +270,18 @@ export class Grid {
             };
 
             // Apply the current combination pattern to the top row (Row 0)
-            for (let c = 0; c < width; c++) {
-                if ((firstRowPattern >> c) & 1) {
-                    press(0, c);
+            for (let col = 0; col < width; col++) {
+                // Bitwise operations to try this permutation
+                if ((firstRowPattern >> col) & 1) {
+                    press(0, col);
                 }
             }
 
             // Chase the lights down row by row
-            for (let r = 0; r < height - 1; r++) {
-                for (let c = 0; c < width; c++) {
-                    if (board[r][c] === 1) {
-                        press(r + 1, c); // Press directly below to extinguish
+            for (let row = 0; row < height - 1; row++) {
+                for (let col = 0; col < width; col++) {
+                    if (board[row][col] === 1) {
+                        press(row + 1, col); // Press directly below to extinguish
                     }
                 }
             }
