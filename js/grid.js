@@ -229,36 +229,113 @@ export class Grid {
     }
 
     /**
+     * Generates a sequence of moves that solves the puzzle, if one exists
+     * @param {Array2D} initialBoard - A 2D array of 0's & 1's representing the grid's state
+     * @returns a 2D array of moves (where to click) to solve the given puzzle
+     */
+    solveDynamicChasing(initialBoard) {
+        const height = initialBoard.length;
+        const width = initialBoard[0].length;
+        const maxCombinations = Math.pow(2, width); // 2^W possibilities
+
+        // Helper to simulate a grid state and chase it down
+        function tryFirstRowPattern(firstRowPattern) {
+            // Clone the original board to avoid modifying it
+            let board = initialBoard.map(row => [...row]);
+            let moves = Array(height).fill(0).map(() => Array(width).fill(0));
+
+            // Helper to simulate a button press while keeping track of moves
+            const press = (row, col) => {
+                moves[row][col] ^= 1; // Keep track that we clicked here: [currRow][currCol]
+
+                const directions = [
+                    [0, 0],  // Current position
+                    [-1, 0], // Row above
+                    [1, 0],  // Row below
+                    [0, -1], // Column to left
+                    [0, 1]   // Column to right
+                ];
+
+                directions.forEach(([dr, dc]) => {
+                    const newRow = row + dr; // Add our currRow + deltaRow
+                    const newCol = col + dc; // Add out currCol + deltaCol
+                    if (newRow >= 0 && newRow < height && newCol >= 0 && newCol < width) { // Check boundaries
+                        board[newRow][newCol] ^= 1; // Flip on/off state of cell @ [newRow][newCol]
+                    }
+                });
+            };
+
+            // Apply the current combination pattern to the top row (Row 0)
+            for (let c = 0; c < width; c++) {
+                if ((firstRowPattern >> c) & 1) {
+                    press(0, c);
+                }
+            }
+
+            // Chase the lights down row by row
+            for (let r = 0; r < height - 1; r++) {
+                for (let c = 0; c < width; c++) {
+                    if (board[r][c] === 1) {
+                        press(r + 1, c); // Press directly below to extinguish
+                    }
+                }
+            }
+
+            // Verify if the bottom row is completely cleared
+            const isSolved = board[height - 1].every(cell => cell === 0);
+            
+            return isSolved ? moves : null;
+        }
+
+        // Iterate through all 2^W possible top-row setups
+        for (let pattern = 0; pattern < maxCombinations; pattern++) {
+            const solution = tryFirstRowPattern(pattern);
+            if (solution) {
+                return solution; // Found a valid sequence of moves!
+            }
+        }
+
+        return null; // The puzzle is mathematically unsolvable
+    }
+
+    /**
      * Solves the puzzle using the Light Chase method
      * @returns void
      */
     solveWithLightChase() {
-        let state = [];
-        let actions = [];
-        let stateString = "";
-        const lookupTable = {
-        "00000": [],           // Already solved
-        "10001": [3, 4],       // Lights at 1 and 5 -> Click cells 4 and 5
-        "01010": [1, 3, 4],    // Lights at 2 and 4 -> Click cells 2, 4, and 5
-        "11100": [1],          // Lights at 1, 2, and 3 -> Click cell 2
-        "00111": [3],          // Lights at 3, 4, and 5 -> Click cell 4
-        "10110": [4],          // Lights at 1, 3, and 4 -> Click cell 5
-        "01101": [0],          // Lights at 2, 3, and 5 -> Click cell 1
-        "11011": [2]           // Lights at 1, 2, 4, and 5 -> Click cell 3
-    };
+        // Convert current DOM element states into a 2D matrix
+        const currentBoard = this.getBoardState();
+        // Generate the solution steps matrix
+        const solutionMoves = this.solveDynamicChasing(currentBoard);
+        const clickQueue = []; // Will be a queue of cells who need to be clicked
 
-        // TODO Extend the lookup table from 5x5 to 8x8. Need vectors?
-
-        // Loop, clearing all rows but last one using clearRow()
-        // until last row can be checked
-        for (let i = 0; i < this.rows - 1; i++) { // (rows - 1) = index of second to last row
-            this.clearRow(i);
+        if (!solutionMoves) {
+            alert("This grid configuration is mathematically unsolvable!");
+            return;
         }
 
-        // Check last row - HARD FUNCTIONALITLY. Functionalize this, I feel
-        state = this.getBottomRowState();
-        stateString = state.map(val => val ? '1' : '0').join('');
+        // Extract and queue only the cells that need to be clicked
+        for (let r = 0; r < this.rows; r++) {
+            for (let c = 0; c < this.cols; c++) {
+                if (solutionMoves[r][c] === 1) {
+                    clickQueue.push({ r, c });
+                }
+            }
+        }
+
+        // Execute sequential clicks with a timed delay
+        const delayBetweenClicks = 250; // Milliseconds
         
-        // Go through all permutations of first row's configuation - look ahead? recursion?
+        clickQueue.forEach((target, index) => {
+            setTimeout(() => {
+                // Find the cell to click using template literals
+                const cellToClick = this.gridContainer.querySelector(
+                    `[data-row="${target.r}"][data-col="${target.c}"]`
+                );
+                
+                if (cellToClick) { this.flipCellAndNeighbors(cellToClick); } // Click the cell
+            }, index * delayBetweenClicks);
+        });
     }
+
 }
