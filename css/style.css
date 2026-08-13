@@ -12,6 +12,12 @@ body {
     text-align: center;
 }
 
+.grid-html {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Creates 3 equal columns */
+    gap: 20px; /* Space between the columns */
+}
+
 .grid-container {
     display: grid;
     /* Use the JS variables, falling back to 8 if not provided */
