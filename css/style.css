@@ -4,6 +4,7 @@ body {
     justify-content: center;
     height: 100vh;
     margin: 0;
+    text-align: center;
     background-color: #f0f2f5;
 }
 
@@ -17,6 +18,7 @@ body {
     justify-content: center;
     align-items: center;
     grid-template-columns: repeat(3, 1fr); /* Creates 3 equal columns */
+    margin: 60px;
     gap: 20px; /* Space between the columns */
 }
 
