@@ -25,9 +25,12 @@ body {
 .column-left {
     display: flex;
     flex-direction: column;
-    align-items: left;
-    text-align: center;
+    text-align: left;
     background-color: #cfd6db;
+    /* Keep the heading of this column centered */
+    h2 {
+        text-align: center;
+    }
 }
 
 .column-middle {
@@ -38,7 +41,7 @@ body {
 }
 
 .column-right {
-    background-color: #cb2d3a;
+    background-color: #c4aae7;
 }
 
 .grid-container {
