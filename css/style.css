@@ -2,7 +2,6 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     height: 100vh;
     margin: 0;
     background-color: #f0f2f5;
@@ -14,8 +13,30 @@ body {
 
 .grid-html {
     display: grid;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     grid-template-columns: repeat(3, 1fr); /* Creates 3 equal columns */
     gap: 20px; /* Space between the columns */
+}
+
+.column-left {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    text-align: center;
+    background-color: #cfd6db;
+}
+
+.column-middle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.column-right {
+    background-color: #cb2d3a;
 }
 
 .grid-container {
