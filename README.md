@@ -12,11 +12,15 @@ Seeing <@Random Noise>'s video made me want to do a visualization of the solving
 
 ## Reflection
 ### General Thoughts
-I feel as though I used AI ***too*** much throughout the making of this program. I will excuse its usage *this* time simply because this is my first "real" project using HTML, CSS, and JavaScript. AI helped me see all three in action
+I feel as though I used AI ***too*** much throughout the making of this program. I will excuse its usage *this* time simply because this is my first "real" project using HTML, CSS, and JavaScript. AI helped me see all three in action and how they all connect with one another. It helped especially to see JavaScript code that's very "JavaScript-y". Like how people say to code Python in a "Pythonic" way. 
+
+I think AI usage as a tool for learning is better than a crutch for understanding. However, I used it as a crutch with the Linear Equations version of the project's solve method; since I don't know much about Linear Equations and would rather this one method not stop me from moving on to another project. Though it would have been nice to wrap my head around a new sector of mathematics, I feel as though now is not the time. Sad, I know.
 ### What I Learned
 + I learned a lot of general things about CSS and JavaScript through this project (basics)
 + How HTML, CSS, and JavaScript connect to form a webpage
++ The importing of scripts in HTML using the <script> tag
 ### What I Need More Practice On
 + DOM elements and their usage
++ Proper usage of .js files. I currently feel as though I've just been making them to compartmentalize simple code. I feel like all of my buttons could be inside of one "Buttons.js" file, for example. I understand when things get more complex, this compartmentalizing of code is ideal, but all these buttons were doing is calling methods of the grid instance created in app.js. Maybe in a larger scope project I would have a file called "GridButtons.js". That way, other buttons that do more than run a method of a class can be in their own files while method calling buttons would be collected in a single file.
 ### Possible Improvments
 + SAMPLE TEXT
