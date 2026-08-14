@@ -343,4 +343,99 @@ export class Grid {
         });
     }
 
+    // GENERATED CODE FOR solve
+    /**
+     * Solves the Lights Out puzzle using linear algebra over GF(2).
+     * @param {number[][]} grid - 2D array where 1 = light is ON, 0 = light is OFF.
+     * @returns {number[][]|null} 2D array indicating which buttons to press (1 = press), or null if unsolvable.
+     */
+    solveWithLinearAlgebra() {
+        const gridArray2D = this.getBoardState();
+        const rows = gridArray2D.length;
+        const cols = gridArray2D[0].length;
+        const n = rows * cols;
+
+        // 1. Create the Augmented Matrix [A | b]
+        // Matrix size: n rows, n + 1 columns
+        const mat = Array.from({ length: n }, () => new Uint8Array(n + 1));
+
+        for (let r = 0; r < rows; r++) {
+            for (let c = 0; c < cols; c++) {
+                const idx = r * cols + c;
+                
+                // Set the current light state in the augmented column b
+                mat[idx][n] = gridArray2D[r][c];
+
+                // Define the 5-point stencil (cell + 4 neighbors)
+                const neighbors = [
+                    [r, c],     // self
+                    [r - 1, c], // top
+                    [r + 1, c], // bottom
+                    [r, c - 1], // left
+                    [r, c + 1]  // right
+                ];
+
+                for (const [nr, nc] of neighbors) {
+                    if (nr >= 0 && nr < rows && nc >= 0 && nc < cols) {
+                        const nIdx = nr * cols + nc;
+                        mat[idx][nIdx] = 1; // Pressing nIdx toggles idx
+                    }
+                }
+            }
+        }
+
+        // 2. Perform Gaussian Elimination over GF(2)
+        let pivotRow = 0;
+        for (let col = 0; col < n; col++) {
+            // Find a pivot row
+            let i = pivotRow;
+            while (i < n && mat[i][col] === 0) i++;
+
+            if (i === n) continue; // Free variable encountered
+
+            // Swap current row with pivot row
+            if (i !== pivotRow) {
+                const temp = mat[pivotRow];
+                mat[pivotRow] = mat[i];
+                mat[i] = temp;
+            }
+
+            // Eliminate column elements in all other rows using XOR
+            for (let r = 0; r < n; r++) {
+                if (r !== pivotRow && mat[r][col] === 1) {
+                    for (let c = col; c <= n; c++) {
+                        mat[r][c] ^= mat[pivotRow][c];
+                    }
+                }
+            }
+            pivotRow++;
+        }
+
+        // 3. Back-substitution & Solvability Verification
+        const solution = Array.from({ length: rows }, () => new Array(cols).fill(0));
+        
+        for (let r = 0; r < n; r++) {
+            // Find the leading 1 in the row
+            let leadingCol = -1;
+            for (let c = 0; c < n; c++) {
+                if (mat[r][c] === 1) {
+                    leadingCol = c;
+                    break;
+                }
+            }
+
+            if (leadingCol === -1) {
+                // If row is all zeros but target b is 1, no solution exists
+                if (mat[r][n] === 1) return null; 
+            } else {
+                // Map flat index back to 2D matrix
+                const solR = Math.floor(leadingCol / cols);
+                const solC = leadingCol % cols;
+                solution[solR][solC] = mat[r][n];
+            }
+        }
+
+        return solution;
+    }
+
 }
