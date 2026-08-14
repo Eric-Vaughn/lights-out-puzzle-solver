@@ -1,5 +1,5 @@
 # Lights Out Puzzle Solver
-This application is able to generate and be given Lights Out puzzles and solve them.
+This interactive application allows you to click anywhere on the puzzle grid to design and solve puzzles. It also has buttons and configurable settings to play around with!
 
 ## Demo files explained
 Files that have the term "demo" appended to them are generated code. These files are meant help me see HTML, CSS, and JavaScript in action, since this is the first application I am creating using them.
