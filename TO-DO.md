@@ -1,6 +1,7 @@
 # TO-DO
 ## General TO-DO
 + ✅ Make a working, click-able grid
++ ✅ Added a favicon to project
 + Update README.md file (close to being done with project, only need Linear Equations solve f())
 + + Add sections: 
 + + + Reflection (how was this project, overall?)
