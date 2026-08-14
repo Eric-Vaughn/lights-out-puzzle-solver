@@ -1,8 +1,14 @@
 # TO-DO
+## Emoji Key
++ ✅ — Completed task
++ ❌ — Incomplete task
++ ⚠️ — Work-in-progress task
++ 🤖 — AI helped significantly with this task
++ No Emoji — A task that has not been attempted yet and/or sub-task information
 ## General TO-DO
 + ✅ Make a working, click-able grid
 + ✅ Added a favicon to project
-+ Update README.md file (close to being done with project, only need Linear Equations solve f())
++ ⚠️ Update README.md file (close to being done with project, only need Linear Equations solve f())
 + + Add sections: 
 + + + Reflection (how was this project, overall?)
 + + + Improvments (what could be improved upon with this application?)
@@ -31,6 +37,6 @@
 + ✅ Add algorithm to solve the puzzle (Light-Chasing method)
 + ✅ Add a button called "Solve: Light-Chase"
 + ✅ Style solve-button
-+ Add algorithm to solve the puzzle (Linear Equations)
++ 🤖✅ Add algorithm to solve the puzzle (Linear Equations)
 + + This method allows for more varied cases to be solved, i.e. a hex version of a Lights Out puzzle
 + Have a variable "showSteps" where the user can select to see a full visulzation of the algorithm they chose, or they can just get the result. Needs a good, boolean-esk var name
