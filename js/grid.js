@@ -138,12 +138,6 @@ export class Grid {
             
             if (!clickedCell) return; 
 
-            // Retrieve row and column details from data attributes
-            const r = clickedCell.dataset.row;
-            const c = clickedCell.dataset.col;
-            
-            console.log(`Cell clicked at Row: ${r}, Column: ${c}`);
-
             this.flipCellAndNeighbors(clickedCell);
         });
     }
@@ -155,7 +149,6 @@ export class Grid {
     turnAllCellsOff() {
         // Find only the cells that are currently "on"
         const activeCells = this.gridContainer.querySelectorAll('.cell[data-status="on"]');
-        console.log(`Found ${activeCells.length} active cells to turn off.`);
 
         // Loop through them and change their status back to "off"
         activeCells.forEach(cell => {
