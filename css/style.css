@@ -27,6 +27,7 @@ body {
     flex-direction: column;
     text-align: left;
     background-color: #cfd6db;
+    padding: 10px;
     /* Keep the heading of this column centered */
     h2 {
         text-align: center;
@@ -41,7 +42,9 @@ body {
 }
 
 .column-right {
+    margin-bottom: 20px;
     background-color: #c4aae7;
+    padding: 10px;
 }
 
 .grid-container {
