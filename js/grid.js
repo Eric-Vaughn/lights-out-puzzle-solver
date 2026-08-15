@@ -343,7 +343,7 @@ export class Grid {
         });
     }
 
-    // GENERATED CODE FOR solve
+    // GENERATED CODE FOR solveWithLinearAlgebra()
     /**
      * Solves the Lights Out puzzle using linear algebra over GF(2).
      * @param {number[][]} grid - 2D array where 1 = light is ON, 0 = light is OFF.
