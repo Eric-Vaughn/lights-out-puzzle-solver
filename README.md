@@ -19,8 +19,12 @@ I think AI usage as a tool for learning is better than a crutch for understandin
 + I learned a lot of general things about CSS and JavaScript through this project (basics)
 + How HTML, CSS, and JavaScript connect to form a webpage
 + The importing of scripts in HTML using the <script> tag
++ How to organize HTML so CSS can make visualizing its contents better
 ### What I Need More Practice On
 + DOM elements and their usage
 + Proper usage of .js files. I currently feel as though I've just been making them to compartmentalize simple code. I feel like all of my buttons could be inside of one "Buttons.js" file, for example. I understand when things get more complex, this compartmentalizing of code is ideal, but all these buttons were doing is calling methods of the grid instance created in app.js. Maybe in a larger scope project I would have a file called "GridButtons.js". That way, other buttons that do more than run a method of a class can be in their own files while method calling buttons would be collected in a single file.
 ### Possible Improvments
-+ SAMPLE TEXT
++ Add a way for the user to set the number of rows and columns
++ Add a toggle to change the solveWithLightChase() button into a solveWithLinearEquations() button
++ Add more design to the HTML & CSS so the webpage isn't as bland
++ Align the left and right columns of HTML content to be flush with each other's top edges
