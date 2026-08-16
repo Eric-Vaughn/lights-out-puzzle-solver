@@ -330,6 +330,8 @@ export class Grid {
      * @returns {Promise<void>} Resolves when the entire queue finishes animating or is aborted.
      */
     async animateSolution(clickQueue, frameDelay = DELAY_BETWEEN_ANIMATION_FRAMES) {
+        this.isSolveAnimationAborted = true;  // Stops any active, asynchronous animation
+        await this.sleep(frameDelay);         // Await for previous animation to abort
         this.isSolveAnimationAborted = false; // Reset state before starting execution
 
         for (const target of clickQueue) {
