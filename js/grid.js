@@ -12,7 +12,7 @@ export class Grid {
         this.rows = rows;
         this.cols = cols;
 
-        this.animationTimerId = null; // For animating .solve() sequences
+        this.isSolveAnimationAborted = false; // For animating solve() sequence(s)
         
         // Safety check to ensure the DOM element exists
         if (!this.gridContainer) {
