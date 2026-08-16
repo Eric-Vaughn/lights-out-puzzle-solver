@@ -192,8 +192,7 @@ export class Grid {
         let randColIndex;
         let randChosenCell;
         
-        // Reset grid to an "off" state
-        this.turnAllCellsOff();
+        this.reset(); // Reset grid
 
         // Loop until control variable === 0
         while (numOfCellsToFlipOn) {
