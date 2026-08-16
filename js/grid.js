@@ -331,7 +331,23 @@ export class Grid {
      * @returns {Promise<void>} Resolves when the entire queue finishes animating or is aborted.
      */
     async animateSolution(clickQueue, frameDelay = DELAY_BETWEEN_ANIMATION_FRAMES) {
-        // TODO
+        this.isSolveAnimationAborted = false; // Reset state before starting execution
+
+        for (const target of clickQueue) {
+            // Instantly exit the entire loop if the user hit the reset button
+            if (this.isSolveAnimationAborted) return;
+
+            const cellToClick = this.gridContainer.querySelector(
+                `[data-row="${target.r}"][data-col="${target.c}"]`
+            );
+
+            if (cellToClick) {
+                this.flipCellAndNeighbors(cellToClick);
+            }
+
+            // Pause and wait before moving to the next item in the queue
+            await this.sleep(frameDelay);
+        }
     }
 
     /**
