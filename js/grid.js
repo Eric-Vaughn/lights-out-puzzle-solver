@@ -1,3 +1,5 @@
+const DELAY_BETWEEN_ANIMATION_FRAMES = 250; // Milliseconds
+
 export class Grid {
     /**
      * Initializes a new instance of the Grid class
@@ -9,6 +11,8 @@ export class Grid {
         this.gridContainer = document.getElementById(containerId);
         this.rows = rows;
         this.cols = cols;
+
+        this.isSolveAnimationAborted = false; // For animating solve() sequence(s)
         
         // Safety check to ensure the DOM element exists
         if (!this.gridContainer) {
@@ -47,6 +51,17 @@ export class Grid {
                 this.gridContainer.appendChild(cell);
             }
         }
+    }
+
+    /**
+     * Pauses execution for a specified duration using a Promise wrapper around setTimeout
+     * Must be used with the `await` keyword inside an asynchronous function
+     * 
+     * @param {number} ms - The number of milliseconds to pause execution
+     * @returns {Promise<void>} A promise that resolves after the specified timeout duration
+     */
+    sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
     }
 
     /**
@@ -155,6 +170,15 @@ export class Grid {
             this.flipCell(cell);
         });
     }
+
+    /**
+     * Resets the grid's state
+     * @returns void
+     */
+    reset() {
+        this.isSolveAnimationAborted = true; // Abort any currently playing animation
+        this.turnAllCellsOff();              // Reset the grid's state to an "off" state
+    }
     
     /**
      * Generates a random layout for the grid. Not garrenteed to be solvable.
@@ -168,8 +192,7 @@ export class Grid {
         let randColIndex;
         let randChosenCell;
         
-        // Reset grid to an "off" state
-        this.turnAllCellsOff();
+        this.reset(); // Reset grid
 
         // Loop until control variable === 0
         while (numOfCellsToFlipOn) {
@@ -223,7 +246,7 @@ export class Grid {
 
     /**
      * Generates a sequence of moves that solves the puzzle, if one exists
-     * @param {Array2D} initialBoard - A 2D array of 0's & 1's representing the grid's state
+     * @param {number[]} initialBoard - A 2D array of 0's & 1's representing the grid's state
      * @returns a 2D array of moves (where to click) to solve the given puzzle
      */
     solveDynamicChasing(initialBoard) {
@@ -297,6 +320,38 @@ export class Grid {
     }
 
     /**
+     * Async processing of a queue of grid coordinates and animates the cell-flipping sequence
+     * This execution can be interrupted prematurely by setting `this.isSolveAnimationAborted` to true
+     * 
+     * @param {Object[]} clickQueue - An array of cell coordinate targets to animate.
+     * @param {number} clickQueue[].r - The zero-based row index of the target cell.
+     * @param {number} clickQueue[].c - The zero-based column index of the target cell.
+     * @param {number} frameDelay - The delay in milliseconds between each step.
+     * @returns {Promise<void>} Resolves when the entire queue finishes animating or is aborted.
+     */
+    async animateSolution(clickQueue, frameDelay = DELAY_BETWEEN_ANIMATION_FRAMES) {
+        this.isSolveAnimationAborted = true;  // Stops any active, asynchronous animation
+        await this.sleep(frameDelay);         // Await for previous animation to abort
+        this.isSolveAnimationAborted = false; // Reset state before starting execution
+
+        for (const target of clickQueue) {
+            // Instantly exit the entire loop if the user hit the reset button
+            if (this.isSolveAnimationAborted) return;
+
+            const cellToClick = this.gridContainer.querySelector(
+                `[data-row="${target.r}"][data-col="${target.c}"]`
+            );
+
+            if (cellToClick) {
+                this.flipCellAndNeighbors(cellToClick);
+            }
+
+            // Pause and wait before moving to the next item in the queue
+            await this.sleep(frameDelay);
+        }
+    }
+
+    /**
      * Solves the puzzle using the Light Chase method
      * @returns void
      */
@@ -321,19 +376,7 @@ export class Grid {
             }
         }
 
-        // Execute sequential clicks with a timed delay
-        const delayBetweenClicks = 250; // Milliseconds
-        
-        clickQueue.forEach((target, index) => {
-            setTimeout(() => {
-                // Find the cell to click using template literals
-                const cellToClick = this.gridContainer.querySelector(
-                    `[data-row="${target.r}"][data-col="${target.c}"]`
-                );
-                
-                if (cellToClick) { this.flipCellAndNeighbors(cellToClick); } // Click the cell
-            }, index * delayBetweenClicks);
-        });
+        this.animateSolution(clickQueue);
     }
 
     // GENERATED CODE FOR solveWithLinearAlgebra()
