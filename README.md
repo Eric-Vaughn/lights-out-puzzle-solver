@@ -1,6 +1,13 @@
 # Lights Out Puzzle Solver
 This interactive application allows you to click anywhere on the puzzle grid to design and solve puzzles. It also has buttons and configurable settings to play around with!
 
+## Instructions to run the application
+1. Clone the repo to your local machine
+2. Using Visual Studio Code, have/install the extenstion: [Live Preview](vscode:extension/ms-vscode.live-server)
+3. Open the repo in Visual Studio Code
+4. Right-click the repo's "index.html" file and select "Open with Live Server"
+    + This will open the application in a new window in your default browser
+
 ## Demo files explained
 Files that have the term "demo" appended to them are generated code. These files are meant help me see HTML, CSS, and JavaScript in action, since this is the first application I am creating using them.
 
@@ -21,6 +28,7 @@ I think AI usage as a tool for learning is better than a crutch for understandin
 + The importing of scripts in HTML using the <script> tag
 + How to organize HTML so CSS can make visualizing its contents better
 + Bit-shifting can be used to generate on/off permutations
++ Ternary expressions are in JavaScript
 ### What I Need More Practice On
 + DOM elements and their usage
 + Proper usage of .js files. I currently feel as though I've just been making them to compartmentalize simple code. I feel like all of my buttons could be inside of one "Buttons.js" file, for example. I understand when things get more complex, this compartmentalizing of code is ideal, but all these buttons were doing is calling methods of the grid instance created in app.js. Maybe in a larger scope project I would have a file called "GridButtons.js". That way, other buttons that do more than run a method of a class can be in their own files while method calling buttons would be collected in a single file.
@@ -29,3 +37,4 @@ I think AI usage as a tool for learning is better than a crutch for understandin
 + Add a toggle to change the solveWithLightChase() button into a solveWithLinearEquations() button
 + Add more design to the HTML & CSS so the webpage isn't as bland
 + Align the left and right columns of HTML content to be flush with each other's top edges
++ During the Solve button's "animation," if the user hits the Reset button, the application resets but keeps trying to solve the previous puzzle (it still runs through the steps it would have done at the time of resetting). This is a bug and should be fixed
