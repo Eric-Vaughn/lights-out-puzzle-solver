@@ -171,6 +171,15 @@ export class Grid {
             this.flipCell(cell);
         });
     }
+
+    /**
+     * Resets the grid's state
+     * @returns void
+     */
+    reset() {
+        this.stopAnimation(); // Reset any currently playing animation
+        this.turnAllCellsOff(); // Reset the grid's state to an "off" state
+    }
     
     /**
      * Generates a random layout for the grid. Not garrenteed to be solvable.
