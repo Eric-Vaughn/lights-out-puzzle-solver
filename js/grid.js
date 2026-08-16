@@ -176,8 +176,8 @@ export class Grid {
      * @returns void
      */
     reset() {
-        this.stopAnimation();   // Stop any currently playing animation
-        this.turnAllCellsOff(); // Reset the grid's state to an "off" state
+        this.isSolveAnimationAborted = true; // Abort any currently playing animation
+        this.turnAllCellsOff();              // Reset the grid's state to an "off" state
     }
     
     /**
