@@ -246,7 +246,7 @@ export class Grid {
 
     /**
      * Generates a sequence of moves that solves the puzzle, if one exists
-     * @param {Array2D} initialBoard - A 2D array of 0's & 1's representing the grid's state
+     * @param {number[]} initialBoard - A 2D array of 0's & 1's representing the grid's state
      * @returns a 2D array of moves (where to click) to solve the given puzzle
      */
     solveDynamicChasing(initialBoard) {
