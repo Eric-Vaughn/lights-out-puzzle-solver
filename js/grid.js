@@ -322,6 +322,20 @@ export class Grid {
     }
 
     /**
+     * Async processing of a queue of grid coordinates and animates the cell-flipping sequence
+     * This execution can be interrupted prematurely by setting `this.isSolveAnimationAborted` to true
+     * 
+     * @param {Object[]} clickQueue - An array of cell coordinate targets to animate.
+     * @param {number} clickQueue[].r - The zero-based row index of the target cell.
+     * @param {number} clickQueue[].c - The zero-based column index of the target cell.
+     * @param {number} frameDelay - The delay in milliseconds between each step.
+     * @returns {Promise<void>} Resolves when the entire queue finishes animating or is aborted.
+     */
+    async animateSolution(clickQueue, frameDelay = DELAY_BETWEEN_ANIMATION_FRAMES) {
+        // TODO
+    }
+
+    /**
      * Solves the puzzle using the Light Chase method
      * @returns void
      */
@@ -346,16 +360,7 @@ export class Grid {
             }
         }
 
-        clickQueue.forEach((target, index) => {
-            setTimeout(() => {
-                // Find the cell to click using template literals
-                const cellToClick = this.gridContainer.querySelector(
-                    `[data-row="${target.r}"][data-col="${target.c}"]`
-                );
-                
-                if (cellToClick) { this.flipCellAndNeighbors(cellToClick); } // Click the cell
-            }, index * DELAY_BETWEEN_ANIMATION_FRAMES);
-        });
+        this.animateSolution(clickQueue);
     }
 
     // GENERATED CODE FOR solveWithLinearAlgebra()
