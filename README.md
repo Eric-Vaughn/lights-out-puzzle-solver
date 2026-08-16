@@ -37,4 +37,4 @@ I think AI usage as a tool for learning is better than a crutch for understandin
 + Add a toggle to change the solveWithLightChase() button into a solveWithLinearEquations() button
 + Add more design to the HTML & CSS so the webpage isn't as bland
 + Align the left and right columns of HTML content to be flush with each other's top edges
-+ During the Solve button's "animation," if the user hits the Reset button, the application resets but keeps trying to solve the previous puzzle (it still runs through the steps it would have done at the time of resetting). This is a bug and should be fixed
++ During the Solve button's "animation," if the user hits the Reset button, the application resets but keeps trying to solve the previous puzzle (it still runs through the steps it would have done at the time of resetting). **This is a bug and should be fixed**
