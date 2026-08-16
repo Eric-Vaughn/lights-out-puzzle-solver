@@ -54,6 +54,18 @@ export class Grid {
     }
 
     /**
+     * Stops the current animation, if one is playing
+     * @returns void
+     */
+    stopAnimation() {
+        // If we have an animation going
+        if (this.animationTimerId) {
+            clearTimeout(this.animationTimerId); // Kill the animation
+            this.animationTimerId = null; // Update that we have no current animation
+        }
+    }
+
+    /**
      * Generates a 2D array version of the grid's current state
      * @returns a 2D array of the grid's current state
      */
