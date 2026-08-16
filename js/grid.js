@@ -1,3 +1,5 @@
+const DELAY_BETWEEN_CLICKS = 250; // Milliseconds
+
 export class Grid {
     /**
      * Initializes a new instance of the Grid class
