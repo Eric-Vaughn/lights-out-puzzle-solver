@@ -11,6 +11,8 @@ export class Grid {
         this.gridContainer = document.getElementById(containerId);
         this.rows = rows;
         this.cols = cols;
+
+        this.animationTimerId = null; // For animating .solve() sequences
         
         // Safety check to ensure the DOM element exists
         if (!this.gridContainer) {
