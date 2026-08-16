@@ -1,4 +1,4 @@
-const DELAY_BETWEEN_CLICKS = 250; // Milliseconds
+const DELAY_BETWEEN_ANIMATION_FRAMES = 250; // Milliseconds
 
 export class Grid {
     /**
@@ -177,7 +177,7 @@ export class Grid {
      * @returns void
      */
     reset() {
-        this.stopAnimation(); // Reset any currently playing animation
+        this.stopAnimation();   // Stop any currently playing animation
         this.turnAllCellsOff(); // Reset the grid's state to an "off" state
     }
     
@@ -346,9 +346,6 @@ export class Grid {
             }
         }
 
-        // Execute sequential clicks with a timed delay
-        const delayBetweenClicks = 250; // Milliseconds
-        
         clickQueue.forEach((target, index) => {
             setTimeout(() => {
                 // Find the cell to click using template literals
@@ -357,7 +354,7 @@ export class Grid {
                 );
                 
                 if (cellToClick) { this.flipCellAndNeighbors(cellToClick); } // Click the cell
-            }, index * delayBetweenClicks);
+            }, index * DELAY_BETWEEN_ANIMATION_FRAMES);
         });
     }
 
