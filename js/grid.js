@@ -54,6 +54,17 @@ export class Grid {
     }
 
     /**
+     * Pauses execution for a specified duration using a Promise wrapper around setTimeout
+     * Must be used with the `await` keyword inside an asynchronous function
+     * 
+     * @param {number} ms - The number of milliseconds to pause execution
+     * @returns {Promise<void>} A promise that resolves after the specified timeout duration
+     */
+    sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    /**
      * Generates a 2D array version of the grid's current state
      * @returns a 2D array of the grid's current state
      */
