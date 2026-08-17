@@ -39,3 +39,4 @@ I think AI usage as a tool for learning is better than a crutch for understandin
 + Align the left and right columns of HTML content to be flush with each other's top edges
 + ~~During the Solve button's "animation," if the user hits the Reset button, the application resets but keeps trying to solve the previous puzzle (it still runs through the steps it would have done at the time of resetting). **This is a bug and should be fixed**~~
     + Issue resolved!
++ Add a logging system and display that tells the user what the auto-solver is doing
