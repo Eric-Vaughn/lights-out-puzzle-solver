@@ -39,4 +39,6 @@
 + ✅ Add algorithm to solve the puzzle (Light-Chasing method)
 + 🤖✅ Add algorithm to solve the puzzle (Linear Equations)
     + This method allows for more varied cases to be solved, i.e. a hex version of a Lights Out puzzle
++ ✅ Fix solve-button animation glitches
+    + While animation is playing, user can click other buttons and make weird behavior happen
 + ❌ Have a variable "showSteps" where the user can select to see a full visulzation of the algorithm they chose, or they can just get the result. Needs a good, boolean-esk var name
