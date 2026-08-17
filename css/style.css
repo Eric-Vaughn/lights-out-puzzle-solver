@@ -26,8 +26,6 @@ body {
   padding: 0 8px; /* Extra horizontal padding prevents the tilted text from clipping */
 }
 
-
-
 .grid-html {
     display: grid;
     flex-direction: column;
