@@ -185,7 +185,7 @@ export class Grid {
      * @returns void
      */
     genRandomLayout() {
-        const PERCENT_CELLS_TO_FILP = 0.15; // The percentage of total cells to randomly flip
+        const PERCENT_CELLS_TO_FILP = 0.2; // The percentage of total cells to randomly flip
         // TotalCells * PercentToFlip --> Floor() it and ensure it is a Number not a Float
         let numOfCellsToFlipOn = Number(Math.floor((this.rows * this.cols) * PERCENT_CELLS_TO_FILP));
         let randRowIndex;
