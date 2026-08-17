@@ -42,7 +42,6 @@ body {
     text-align: center;
     h2 {
         background-color: #f8fa76;
-        border: 2px solid #000000;
     }
 }
 
@@ -57,10 +56,12 @@ body {
     padding: 10px;
 }
 
-/* Give the left and right columns a border */
+/* Apply a simple, black boarder to: */
 .grid-html > .column-left,
-.grid-html > .column-right {
-    border: 2px solid #000000;
+.grid-html > .column-right,
+.column-middle > h2,
+.column-right > button {
+    border: 1px solid #000000;
 }
 
 .grid-container {
