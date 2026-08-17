@@ -26,6 +26,7 @@ body {
     display: flex;
     flex-direction: column;
     text-align: left;
+    height: 550px;
     background-color: #cfd6db;
     padding: 10px;
     /* Keep the heading of this column centered */
@@ -39,11 +40,17 @@ body {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    
 }
 
 .column-right {
+    display: grid;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin-bottom: 20px;
     background-color: #c4aae7;
+    height: 550px;
     padding: 10px;
 }
 
@@ -85,7 +92,7 @@ body {
     background-color: #e63946;                /* A "destructive" red for the reset action */
     color: #ffffff;                           /* Crisp white text color */
     font-family: sans-serif;                    /* Clean, modern font */
-    font-size: 14px;                            /* Readable text size */
+    font-size: 26px;                            /* Readable text size */
     font-weight: 600;                           /* Slightly bold text */
     padding: 10px 20px;                         /* Spacing inside the button (vertical horizontal) */
     border: none;                               /* Removes the ugly default browser border */
@@ -105,7 +112,7 @@ body {
     background-color: #3f9deb;
     color: #ffffff;
     font-family: sans-serif;
-    font-size: 14px;
+    font-size: 26px;
     font-weight: 600;
     padding: 10px 20px;
     border: none;
@@ -125,7 +132,7 @@ body {
     background-color: #2df1e8;
     color: #ffffff;
     font-family: sans-serif;
-    font-size: 14px;
+    font-size: 26px;
     font-weight: 600;
     padding: 10px 20px;
     border: none;
