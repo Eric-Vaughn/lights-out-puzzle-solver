@@ -25,7 +25,9 @@ END DATE: 2026-08-17
 AMOUNT OF DAYS PROJECT WAS ACTIVE: 19
 AMOUNT OF DAYS I WORKED ON THE PROJECT: 14
 
-The amount of days spent on this project is far greater than it should have been. Some days I worked on the project for maybe 20 minutes, others 2-4 hours. I'd estimate it took more around 9 days worth of work/research for about 3 hours per day. So, 27 total "work hours" for this project, liberally.
+The amount of days spent on this project is far greater than it should have been. Some days I worked on the project for maybe 20 minutes, others 2-4 hours. I'd estimate it took around 9 days worth of work/research for about 3 hours per day. So, 27 total "work hours" for this project — liberally. Which would be 3 workdays (8 hours/day) + 3 extra hours.
+
+Not bad for my first project!
 #### AI Usage
 I feel as though I used AI ***too*** much throughout the making of this program. I will excuse its usage *this* time simply because this is my first "real" project using HTML, CSS, and JavaScript. AI helped me see all three in action and how they all connect with one another. It helped especially to see JavaScript code that's very "JavaScript-y". Like how people say to code Python in a "Pythonic" way. 
 
