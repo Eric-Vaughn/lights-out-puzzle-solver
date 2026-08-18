@@ -20,10 +20,10 @@ Seeing <@Random Noise>'s video made me want to do a visualization of the solving
 ## Reflection
 ### General Thoughts
 #### Time Spent & Rate of Completion
-START DATE: 2026-07-30
-END DATE: 2026-08-17
-AMOUNT OF DAYS PROJECT WAS ACTIVE: 19
-AMOUNT OF DAYS I WORKED ON THE PROJECT: 14
++ START DATE: 2026-07-30
++ END DATE: 2026-08-17
++ AMOUNT OF DAYS PROJECT WAS ACTIVE: 19
++ AMOUNT OF DAYS I WORKED ON THE PROJECT: 14
 
 The amount of days spent on this project is far greater than it should have been. Some days I worked on the project for maybe 20 minutes, others 2-4 hours. I'd estimate it took around 9 days worth of work/research for about 3 hours per day. So, 27 total "work hours" for this project — liberally. Which would be 3 workdays (8 hours/day) + 3 extra hours.
 
