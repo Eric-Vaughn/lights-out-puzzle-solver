@@ -121,7 +121,7 @@ I know this is a pretty basic concept that I'm overexplaining, but there are qui
 + More practice of lambda functions. Currently, I feel as though my understanding is still rather [black box](https://en.wikipedia.org/wiki/Black_box)
 ### Possible Improvments
 + Add a way for the user to set the number of rows and columns
-+ Add a toggle to change the solveWithLightChase() button into a solveWithLinearEquations() button
++ Add a toggle to change the `solveWithLightChase()` button into a `solveWithLinearEquations()` button
 + Add more design to the HTML & CSS so the webpage isn't as bland
 + Align the left and right columns of HTML content to be flush with each other's top edges
 + ~~During the Solve button's "animation," if the user hits the Reset button, the application resets but keeps trying to solve the previous puzzle (it still runs through the steps it would have done at the time of resetting). **This is a bug and should be fixed**~~
